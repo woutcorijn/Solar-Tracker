@@ -1,4 +1,4 @@
-setInterval(reload, 2000);
+setInterval(reload, 1000);
 document.getElementById("data").style.visibility = "hidden";
 
 function reload() {

@@ -9,11 +9,12 @@ ser = serial.Serial('/dev/rfcomm0', 9600)
 
 #get Arduino data
 def getData():
+	global data
         data = ser.readline()
         print(data)
 
 scheduler = BackgroundScheduler()
-scheduler.add_job(getData, 'interval', seconds=2)
+scheduler.add_job(getData, 'interval', seconds=1)
 scheduler.start()
 
 #webserver
