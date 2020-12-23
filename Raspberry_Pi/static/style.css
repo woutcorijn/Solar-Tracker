@@ -1,0 +1,60 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+font-family: 'JetBrains Mono', monospace;
+background-color: #77dd77;
+}
+
+#main {
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 60vw;
+  background-color: #77dd77;
+  height: 100vh;
+  position: absolute;
+}
+
+#title {
+  text-align: center;
+  margin-top: 5vh;
+  position: absolute;
+  width: 100%;
+  font-size: 32px;
+}
+
+#info_block {
+  margin: 15vh auto 0;
+  width: 40%;
+  height: 60%;
+  background: white;
+}
+
+#data, .data_title {
+display: inline-block;
+margin-left: 10px;
+}
+
+.data_title {
+    font-weight: bold;
+    margin-top: 10px;
+}
+/* mobile */
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 1024px) {
+  #main {
+    width: 100vw;
+  }
+  #title {
+    margin-top: 3vh;
+  }
+  #info_block {
+    margin: 22vh auto 0;
+    width: 70%;
+    height: 60%;
+  }
+}

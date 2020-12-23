@@ -1,22 +1,27 @@
-#module for reading serial data.
-import serial
-#webserver module.
-from flask import Flask
+import serial #module for reading serial data.
+from flask import Flask, render_template #webserver module.
+from apscheduler.schedulers.background import BackgroundScheduler
+
+data = "Waiting for data..."
 
 #Open the Serial Port
-#ser = serial.Serial('/dev/rfcomm0', 9600)
+ser = serial.Serial('/dev/rfcomm0', 9600)
 
 #get Arduino data
-print("Waiting for data...")
+def getData():
+        data = ser.readline()
+        print(data)
 
-#while True:
-    #result = ser.readline()
-    #print(result)
+scheduler = BackgroundScheduler()
+scheduler.add_job(getData, 'interval', seconds=2)
+scheduler.start()
 
 #webserver
 app = Flask(__name__)
 
 @app.route('/')
-def hello():
-    name = request.args.get("name", "World")
-    return f'Hello, {escape(name)}!'
+def main():
+    return render_template("index.html", data=data)
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=80)
