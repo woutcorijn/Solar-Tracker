@@ -9,8 +9,6 @@ data = "Waiting for data..."
 wb = Workbook()
 sheet1 = wb.add_sheet('Sheet1')
 rcell = 0
-time = datetime.now()
-timeFormat = time.strftime("%m/%d/%Y, %H:%M:%S")
 
 #Open the Serial Port
 ser = serial.Serial('/dev/rfcomm0', 9600)
@@ -21,6 +19,8 @@ def getData():
 	data = ser.readline()
 	print(data)
 	if data != "Waiting for data...":
+		time = datetime.now()
+		timeFormat = time.strftime("%m/%d/%Y, %H:%M:%S")
 		sheet1.write(rcell, 0, timeFormat)
 		sheet1.write(rcell, 1, data)
 		rcell += 1
