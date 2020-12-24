@@ -17,15 +17,14 @@ ser = serial.Serial('/dev/rfcomm0', 9600)
 
 #get Arduino data
 def getData():
-	global rcell
-	data = ser.readline() + "V"
+	global rcell, data
+	data = ser.readline()
 	print(data)
 	if data != "Waiting for data...":
 		sheet1.write(rcell, 0, timeFormat)
 		sheet1.write(rcell, 1, data)
 		rcell += 1
 		wb.save('data.xls')
-
 
 scheduler = BackgroundScheduler()
 scheduler.add_job(getData, 'interval', seconds=1)
@@ -36,7 +35,8 @@ app = Flask(__name__)
 
 @app.route('/')
 def main():
-    return render_template("index.html", data=data)
+	dataSend = data + "V"
+	return render_template("index.html", data=dataSend)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=80)
