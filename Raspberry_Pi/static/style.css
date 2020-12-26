@@ -33,7 +33,7 @@ background-color: #77dd77;
   background: white;
 }
 
-#data, .data_title {
+.data, .data_title {
 display: inline-block;
 margin-left: 10px;
 }

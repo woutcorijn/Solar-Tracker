@@ -17,13 +17,14 @@ ser = serial.Serial('/dev/rfcomm0', 9600)
 def getData():
 	global rcell, data, dataString
 	data = ser.readline()
-	print(data)
 	dataString = data.split("/")
+	print(dataString[0])
+	print(dataString[1])
 	if data != "Waiting for data...":
 		time = datetime.now()
 		timeFormat = time.strftime("%m/%d/%Y, %H:%M:%S")
 		sheet1.write(rcell, 0, timeFormat)
-		for i in dataString:
+		for i in range(len(dataString)):
 			sheet1.write(rcell, i+1, dataString[i])
 		rcell += 1
 		wb.save('data.xls')
