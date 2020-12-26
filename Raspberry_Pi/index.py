@@ -15,14 +15,16 @@ ser = serial.Serial('/dev/rfcomm0', 9600)
 
 #get Arduino data
 def getData():
-	global rcell, data
+	global rcell, data, dataString
 	data = ser.readline()
 	print(data)
+	dataString = data.split("/")
 	if data != "Waiting for data...":
 		time = datetime.now()
 		timeFormat = time.strftime("%m/%d/%Y, %H:%M:%S")
 		sheet1.write(rcell, 0, timeFormat)
-		sheet1.write(rcell, 1, data)
+		for i in dataString:
+			sheet1.write(rcell, i+1, dataString[i])
 		rcell += 1
 		wb.save('data.xls')
 
@@ -35,8 +37,9 @@ app = Flask(__name__)
 
 @app.route('/')
 def main():
-	dataSend = data + "V"
-	return render_template("index.html", data=dataSend)
+	data1 = dataString[0] + "V"
+	data2 = dataString[1]
+	return render_template("index.html", data1=data1, data2=data2)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=80)
