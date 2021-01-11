@@ -22,8 +22,8 @@ def getData():
 	print(dataString[1])
 	if data != "Waiting for data...":
 		time = datetime.now()
-		timeFormat = time.strftime("%d/%m/%Y, %H:%M:%S")
-		sheet1.write(rcell, 0, timeFormat)
+		timeStamp = time.strftime("%d/%m/%Y, %H:%M:%S")
+		sheet1.write(rcell, 0, timeStamp)
 		for i in range(len(dataString)):
 			sheet1.write(rcell, i+1, dataString[i])
 		rcell += 1
