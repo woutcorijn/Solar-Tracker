@@ -13,7 +13,7 @@ rcell = 0
 #Open the Serial Port
 ser = serial.Serial('/dev/rfcomm0', 9600)
 
-#get Arduino data
+#get Arduino da
 def getData():
 	global rcell, data, dataArray
 	data = ser.readline()
