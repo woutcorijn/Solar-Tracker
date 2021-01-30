@@ -1,3 +1,4 @@
+
 import serial #module for reading serial data.
 from flask import Flask, render_template #webserver module.
 from apscheduler.schedulers.background import BackgroundScheduler
@@ -18,8 +19,8 @@ def getData():
 	global rcell, data, dataArray
 	data = ser.readline()
 	dataArray = data.split("/")
-	print(dataArray[0])
-	print(dataArray[1])
+	for i in range(len(dataArray)):
+		print(dataArray[i])
 	if data != "Waiting for data...":
 		time = datetime.now()
 		timeStamp = time.strftime("%d/%m/%Y, %H:%M:%S")
@@ -39,8 +40,9 @@ app = Flask(__name__)
 @app.route('/')
 def main():
 	data1 = dataArray[0] + "V"
-	data2 = dataArray[1]
-	return render_template("index.html", data1=data1, data2=data2)
+	data2 = dataArray[1] + u"\u00b0"
+	data3 = dataArray[2] + u"\u00b0"
+	return render_template("index.html", data1=data1, data2=data2, data3=data3)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=80)
