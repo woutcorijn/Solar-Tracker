@@ -31,7 +31,7 @@ def getData():
 		wb.save('data.xls')
 
 scheduler = BackgroundScheduler()
-scheduler.add_job(getData, 'interval', seconds=1)
+scheduler.add_job(getData, 'interval', seconds=0.5)
 scheduler.start()
 
 #webserver
