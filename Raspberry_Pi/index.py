@@ -42,7 +42,9 @@ def main():
 	data1 = dataArray[0] + "V"
 	data2 = dataArray[1] + u"\u00b0"
 	data3 = dataArray[2] + u"\u00b0"
-	return render_template("index.html", data1=data1, data2=data2, data3=data3)
+	data4 = dataArray[3]
+	data5 = dataArray[4]
+	return render_template("index.html", data1=data1, data2=data2, data3=data3, data4=data4, data5=data5)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=80)

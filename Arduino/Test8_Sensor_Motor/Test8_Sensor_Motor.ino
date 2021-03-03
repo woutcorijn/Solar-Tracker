@@ -2,7 +2,7 @@
 
 Servo servoAngle;
 Servo servoRotate;
-int positionAngle = 67.5;
+int positionAngle = 50;
 int positionRotate = 0;
 float BO;
 float LR;
@@ -48,7 +48,7 @@ while(BO > 517 || BO < 506 || LR > 517 || LR < 506) {
   
   servoRotate.write(positionRotate);
   //Serial.println("Rotatie: " + String(positionRotate));
-  Serial.println((String)"5.00" + "/" + Angle(positionRotate) + "/" + Angle(positionAngle));
+  Serial.println((String)"5.00" + "/" + Angle(positionRotate) + "/" + Angle(positionAngle) + "/" + LR + "/" + BO);
   delay(500);
 }
 //Serial.println("Break");
