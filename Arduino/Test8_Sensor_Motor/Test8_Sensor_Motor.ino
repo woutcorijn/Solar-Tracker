@@ -16,13 +16,10 @@ void setup() {
 void loop() {
   BO = analogRead(A1);
   LR = analogRead(A0);
-    
+
 while(BO > 517 || BO < 506 || LR > 517 || LR < 506) {
   BO = analogRead(A1);
   LR = analogRead(A0);
-
-  //Serial.println("Boven-Onder: " + String(BO));
-  //Serial.println("Links-Rechts: " + String(LR));
 
     if(BO > 517) {
   positionAngle -= 1;
@@ -42,17 +39,14 @@ while(BO > 517 || BO < 506 || LR > 517 || LR < 506) {
     if ( positionAngle == 50 || positionAngle == 130) {
     BO = 512;
   }
-  
+
   servoAngle.write(positionAngle);
-  //Serial.println("Hoek: " + String(positionAngle));
-  
+
   servoRotate.write(positionRotate);
-  //Serial.println("Rotatie: " + String(positionRotate));
   Serial.println((String)"5.00" + "/" + Angle(positionRotate) + "/" + Angle(positionAngle) + "/" + LR + "/" + BO);
   delay(500);
 }
-//Serial.println("Break");
-delay(60000);
+delay(5 * 60000);
 }
 
 float Angle(float degree) {
