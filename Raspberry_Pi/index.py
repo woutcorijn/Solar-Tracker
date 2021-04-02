@@ -10,6 +10,7 @@ data = "Waiting for data..."
 wb = Workbook()
 sheet1 = wb.add_sheet('Sheet1')
 rcell = 0
+Filename = "%Y_%m_%d_%H_%M.xls"
 
 #Open the Serial Port
 ser = serial.Serial('/dev/rfcomm0', 9600)
@@ -23,12 +24,12 @@ def getData():
 		print(dataArray[i])
 	if data != "Waiting for data...":
 		time = datetime.now()
-		timeStamp = time.strftime("%d/%m/%Y, %H:%M:%S")
+		timeStamp = time.strftime("%Y/%m/%d, %H:%M:%S")
 		sheet1.write(rcell, 0, timeStamp)
 		for i in range(len(dataArray)):
 			sheet1.write(rcell, i+1, dataArray[i])
 		rcell += 1
-		wb.save('data.xls')
+		wb.save(Filename)
 
 scheduler = BackgroundScheduler()
 scheduler.add_job(getData, 'interval', seconds=0.5)
