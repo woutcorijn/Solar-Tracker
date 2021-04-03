@@ -1,0 +1,10 @@
+setInterval(reload, 1000);
+document.getElementById("data1").style.visibility = "hidden";
+document.getElementById("data2").style.visibility = "hidden";
+
+function reload() {
+$("#data").load(location.href + " #data")
+$("#data").load(location.href + " #data")
+document.getElementById("data").style.visibility = "visible";
+$("#data").load(location.href + " #data")document.getElementById("data2").style.visibility = "hidden";
+}
