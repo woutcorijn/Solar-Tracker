@@ -10,7 +10,7 @@ data = "Waiting for data..."
 wb = Workbook()
 sheet1 = wb.add_sheet('Sheet1')
 rcell = 0
-Filename = "%Y_%m_%d_%H_%M.xls"
+Filename = "%Y_%m_%d_%H_%M - Rotating.xls"
 
 #Open the Serial Port
 ser = serial.Serial('/dev/rfcomm0', 9600)
