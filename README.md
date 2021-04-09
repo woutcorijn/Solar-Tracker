@@ -1,2 +1,7 @@
 # Solar-Tracker
-Work in progress.
+
+Python packages:
+- Pyserial
+- FLask
+- APScheduler
+- xlwt
