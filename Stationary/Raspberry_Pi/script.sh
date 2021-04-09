@@ -1,5 +1,5 @@
 #!/bin/sh
-cd /home/woutco/Solar-Tracker/Raspberry_Pi/
+cd /home/woutco/Solar-Tracker/Stationary/Raspberry_Pi/
 rfcomm release 0
-rfcomm bind hci0 20:16:06:15:63:62
+rfcomm bind hci0 98:DA:60:00:CA:98
 timeout 2h python index.py
