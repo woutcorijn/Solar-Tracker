@@ -6,11 +6,12 @@ import xlwt #write to excel sheet
 from xlwt import Workbook
 from datetime import datetime
 
-data = "Waiting for data..."
 wb = Workbook()
 sheet1 = wb.add_sheet('Sheet1')
 rcell = 0
-Filename = "%Y_%m_%d_%H_%M - Rotating.xls"
+
+time = datetime.now()
+Filename = time.strftime("%Y_%m_%d_%H_%M - Rotating.xls")
 
 #Open the Serial Port
 ser = serial.Serial('/dev/rfcomm0', 9600)
@@ -22,14 +23,13 @@ def getData():
 	dataArray = data.split("/")
 	for i in range(len(dataArray)):
 		print(dataArray[i])
-	if data != "Waiting for data...":
-		time = datetime.now()
-		timeStamp = time.strftime("%Y/%m/%d, %H:%M:%S")
-		sheet1.write(rcell, 0, timeStamp)
-		for i in range(len(dataArray)):
-			sheet1.write(rcell, i+1, dataArray[i])
-		rcell += 1
-		wb.save(Filename)
+	time = datetime.now()
+	timeStamp = time.strftime("%Y/%m/%d, %H:%M:%S")
+	sheet1.write(rcell, 0, timeStamp)
+	for i in range(len(dataArray)):
+		sheet1.write(rcell, i+1, dataArray[i])
+	rcell += 1
+	wb.save(Filename)
 
 scheduler = BackgroundScheduler()
 scheduler.add_job(getData, 'interval', seconds=0.5)
