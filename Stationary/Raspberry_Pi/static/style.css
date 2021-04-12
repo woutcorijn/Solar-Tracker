@@ -15,7 +15,7 @@ font-family: 'Noto Sans', sans-serif;
 }
 
 #title {
-margin-top: 20px;
+margin-top: 15px;
 font-size: 50px;
 text-align: center;
 font-weight: 700;
@@ -34,16 +34,16 @@ font-weight: 700;
 }
 
 .data_unit {
-margin: 30px 0 0 0;
+margin: 10px 0 0 0;
 text-align: center;
-font-size: 30px;
+font-size: 25px;
 font-weight: 700;
 }
 
 .data_value {
-margin: 0 0 30px 0;
+margin: 0 0 15px 0;
 text-align: center;
-font-size: 80px;
+font-size: 50px;
 font-weight: 700;
 color: #00eb5a;
 }
@@ -63,7 +63,7 @@ and (max-device-width : 1024px) {
   margin: 15px 0 0 0;
   }
   .data_value {
-  margin: 0 0 20px 0;
-  font-size: 50px;
+  margin: 0 0 15px 0;
+  font-size: 30px;
   }
 }
