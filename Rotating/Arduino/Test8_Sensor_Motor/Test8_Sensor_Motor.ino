@@ -4,6 +4,8 @@ Servo servoAngle;
 Servo servoRotate;
 int positionAngle = 90;
 int positionRotate = 90;
+int sensorMax = 518;
+int sensorMin = 505;
 float BO;
 float LR;
 float VoltageReadValue;
@@ -19,20 +21,20 @@ void loop() {
   BO = analogRead(A1);
   LR = analogRead(A0);
 
-while(BO > 520 || BO < 503 || LR > 520 || LR < 503) {
+while(BO > sensorMax || BO < sensorMin || LR > sensorMax || LR < sensorMin) {
   VoltageReadValue = analogRead(A2);
   BO = analogRead(A1);
   LR = analogRead(A0);
 
-    if(BO > 517) {
+    if(BO > sensorMax) {
   positionAngle -= 1;
-  } else if(BO < 506) {
+  } else if(BO < sensorMin) {
    positionAngle += 1;
   }
 
-    if(LR > 517) {
+    if(LR > sensorMax) {
   positionRotate -= 1;
-  } else if(LR < 506) {
+  } else if(LR < sensorMin) {
    positionRotate += 1;
   }
 
@@ -49,7 +51,11 @@ while(BO > 520 || BO < 503 || LR > 520 || LR < 503) {
   Serial.println((String)Voltage(VoltageReadValue) + "/" + Angle(positionRotate) + "/" + Angle(positionAngle) + "/" + LR + "/" + BO);
   delay(500);
 }
-delay(5 * 60000);
+for(int i = 0; i < 601; i++) {
+  VoltageReadValue = analogRead(A2);
+  Serial.println((String)Voltage(VoltageReadValue) + "/" + Angle(positionRotate) + "/" + Angle(positionAngle) + "/" + LR + "/" + BO);
+  delay(500);
+}
 }
 
 float Angle(float degree) {
