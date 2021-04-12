@@ -2,8 +2,8 @@
 
 Servo servoAngle;
 Servo servoRotate;
-int positionAngle = 50;
-int positionRotate = 0;
+int positionAngle = 90;
+int positionRotate = 90;
 float BO;
 float LR;
 float VoltageReadValue;
@@ -19,7 +19,7 @@ void loop() {
   BO = analogRead(A1);
   LR = analogRead(A0);
 
-while(BO > 517 || BO < 506 || LR > 517 || LR < 506) {
+while(BO > 520 || BO < 503 || LR > 520 || LR < 503) {
   VoltageReadValue = analogRead(A2);
   BO = analogRead(A1);
   LR = analogRead(A0);
@@ -36,10 +36,10 @@ while(BO > 517 || BO < 506 || LR > 517 || LR < 506) {
    positionRotate += 1;
   }
 
-  positionAngle = constrain(positionAngle, 50,130);
+  positionAngle = constrain(positionAngle, 60,120);
   positionRotate = constrain(positionRotate, 0,180);
 
-    if ( positionAngle == 50 || positionAngle == 130) {
+    if ( positionAngle == 60 || positionAngle == 120) {
     BO = 512;
   }
 
