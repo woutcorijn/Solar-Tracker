@@ -34,14 +34,14 @@ font-weight: 700;
 }
 
 .data_unit {
-margin: 25px 0 0 0;
+margin: 10px 0 0 0;
 text-align: center;
 font-size: 25px;
 font-weight: 700;
 }
 
 .data_value {
-margin: 0 0 25px 0;
+margin: 0 0 15px 0;
 text-align: center;
 font-size: 50px;
 font-weight: 700;
@@ -63,7 +63,7 @@ and (max-device-width : 1024px) {
   margin: 15px 0 0 0;
   }
   .data_value {
-  margin: 0 0 20px 0;
+  margin: 0 0 15px 0;
   font-size: 30px;
   }
 }
