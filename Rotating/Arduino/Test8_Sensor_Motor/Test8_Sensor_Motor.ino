@@ -56,6 +56,8 @@ while(BO > sensorMax || BO < sensorMin || LR > sensorMax || LR < sensorMin) {
 }
 for(int i = 0; i < 601; i++) {
   VoltageReadValue = analogRead(A2);
+  BO = analogRead(A1);
+  LR = analogRead(A0);
   Serial.println((String)Voltage(VoltageReadValue) + "/" + Angle(positionRotate) + "/" + Angle(positionAngle) + "/" + LR + "/" + BO);
   delay(500);
 }
