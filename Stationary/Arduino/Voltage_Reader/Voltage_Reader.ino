@@ -9,7 +9,7 @@ void setup() {
 void loop() {
   VoltageReadValue = analogRead(A0);
   Serial.println((String)Voltage(VoltageReadValue) + "/");
-  delay(5 * 60000);
+  delay(500);
 }
 
 float Voltage(float Voltage) {
