@@ -44,6 +44,9 @@ while(BO > sensorMax || BO < sensorMin || LR > sensorMax || LR < sensorMin) {
     if ( positionAngle == 60 || positionAngle == 120) {
     BO = 512;
   }
+    if ( positionRotate == 0 || positionRotate == 180) {
+    LR = 512;
+  }
 
   servoAngle.write(positionAngle);
 
