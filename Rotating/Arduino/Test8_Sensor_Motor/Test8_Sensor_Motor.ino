@@ -14,6 +14,9 @@ void setup() {
   Serial.begin(9600);
   servoAngle.attach(5);
   servoRotate.attach(6);
+  servoAngle.write(positionAngle);
+  servoRotate.write(positionRotate);
+  delay(5000);
 }
 
 void loop() {
@@ -26,9 +29,9 @@ while(BO > sensorMax || BO < sensorMin || LR > sensorMax || LR < sensorMin) {
   BO = analogRead(A1);
   LR = analogRead(A0);
 
-    if(BO > sensorMax) {
+    if(BO < sensorMax) {
   positionAngle -= 1;
-  } else if(BO < sensorMin) {
+  } else if(BO > sensorMin) {
    positionAngle += 1;
   }
 
@@ -41,6 +44,9 @@ while(BO > sensorMax || BO < sensorMin || LR > sensorMax || LR < sensorMin) {
   positionAngle = constrain(positionAngle, 60,120);
   positionRotate = constrain(positionRotate, 0,180);
 
+    servoAngle.write(positionAngle);
+    servoRotate.write(positionRotate);
+
     if ( positionAngle == 60 || positionAngle == 120) {
     BO = 512;
   }
@@ -48,18 +54,15 @@ while(BO > sensorMax || BO < sensorMin || LR > sensorMax || LR < sensorMin) {
     LR = 512;
   }
 
-  servoAngle.write(positionAngle);
-
-  servoRotate.write(positionRotate);
-  Serial.println((String)Voltage(VoltageReadValue) + "/" + Angle(positionRotate) + "/" + Angle(positionAngle) + "/" + LR + "/" + BO);
+  Serial.println((String)Voltage(VoltageReadValue) + "/" + Angle(positionRotate) + "/" + Angle(positionAngle - 90) + "/" + LR + "/" + BO + "/Running");
   delay(500);
 }
-for(int i = 0; i < 601; i++) {
+for(int i = 300; i > 0; i--) {
   VoltageReadValue = analogRead(A2);
   BO = analogRead(A1);
   LR = analogRead(A0);
-  Serial.println((String)Voltage(VoltageReadValue) + "/" + Angle(positionRotate) + "/" + Angle(positionAngle) + "/" + LR + "/" + BO);
-  delay(500);
+  Serial.println((String)Voltage(VoltageReadValue) + "/" + Angle(positionRotate) + "/" + Angle(positionAngle - 90) + "/" + LR + "/" + BO + "/" + i + " s");
+  delay(1000);
 }
 }
 
