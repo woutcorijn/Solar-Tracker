@@ -47,16 +47,10 @@ while(BO > sensorMax || BO < sensorMin || LR > sensorMax || LR < sensorMin) {
     servoAngle.write(positionAngle);
     servoRotate.write(positionRotate);
 
-    if ( positionAngle == 60 || positionAngle == 120) {
-    BO = 512;
-  }
-    if ( positionRotate == 0 || positionRotate == 180) {
-    LR = 512;
-  }
-
   Serial.println((String)Voltage(VoltageReadValue) + "/" + Angle(positionRotate) + "/" + Angle(positionAngle - 90) + "/" + LR + "/" + BO + "/Running");
   delay(500);
 }
+
 for(int i = 300; i > 0; i--) {
   VoltageReadValue = analogRead(A2);
   BO = analogRead(A1);
