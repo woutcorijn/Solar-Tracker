@@ -23,13 +23,13 @@ font-weight: 700;
 
 .w1 {
   width: calc(96% - 6px);
-  margin: 2%;
+  margin: 1.5%;
   border: solid 3px black;
 }
 
 .w2 {
   width: calc(46% - 6px);
-  margin: 2%;
+  margin: 1.5%;
   border: solid 3px black;
 }
 
